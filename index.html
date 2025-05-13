@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miri Market - Animierte Version</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Animationen */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(218, 0, 255, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(218, 0, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(218, 0, 255, 0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(218, 0, 255, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(218, 0, 255, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(218, 0, 255, 0.5); }
+        }
+
+        /* Logo Animation */
+        .logo { animation: fadeIn 1s ease-out forwards; }
+        .logo-img { animation: pulse 2s infinite; }
+
+        /* Navigation Animation */
+        .nav-link { position: relative; overflow: hidden; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #da00ff;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { animation: glow 1.5s infinite; }
+
+        .nav-right .nav-link:nth-child(1) { animation: slideInDown 0.5s 0.1s ease-out both; }
+        .nav-right .nav-link:nth-child(2) { animation: slideInDown 0.5s 0.2s ease-out both; }
+        .nav-right .nav-link:nth-child(3) { animation: slideInDown 0.5s 0.3s ease-out both; }
+        .nav-right .nav-link:nth-child(4) { animation: slideInDown 0.5s 0.4s ease-out both; }
+
+        /* Hero Content Animation */
+        .hero-content h1 { animation: slideInLeft 0.8s 0.5s ease-out both; }
+        .hero-content p { animation: slideInRight 0.8s 0.7s ease-out both; }
+        .cta-button { animation: slideInUp 0.8s 0.9s ease-out both, pulse 2s 2s infinite; }
+        .hero-stats { animation: slideInUp 0.8s 1.1s ease-out both; }
+        .stat:nth-child(1) { animation: fadeIn 0.8s 1.3s ease-out both; }
+        .stat:nth-child(2) { animation: fadeIn 0.8s 1.5s ease-out both; }
+        .stat:nth-child(3) { animation: fadeIn 0.8s 1.7s ease-out both; }
+        
+        /* Floating icons */
+        .stat-icon { animation: float 3s ease-in-out infinite; }
+
+        /* Background effects */
+        .hero {
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(218, 0, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: pulse 15s infinite alternate;
+            pointer-events: none;
+        }
+
+        /* Glowing accent text */
+        .accent {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-left">
+            <div class="logo-container">
+                <img src="/api/placeholder/40/40" alt="Miri Market Logo" class="logo-img">
+            </div>
+            <a href="#" class="logo">Miri Market</a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link">CATEGORIES</a>
+            <a href="browse.html" class="nav-link">PRODUCTS</a>
+            <a href="#reviews-section" class="nav-link">REVIEWS</a>
+            <a href="#" class="nav-link">DISCORD</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Stay <span class="accent">Ahead</span> Of The <br>Game with Miri Market.</h1>
+            <p>Choose Miri Market for quality, reliability, and a shopping<br>experience that keeps you coming back!</p>
+            <a href="browse.html" class="cta-button">Explore Products</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                <h3>4.99</h3>
+                <p>Average Rating</p>
+                <span class="stat-desc">When you shop at Miri, you're choosing a<br>trusted store with over 3,000 positive reviews!</span>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-box"></i></div>
+                <h3>21,396</h3>
+                <p>Products Sold</p>
+                <span class="stat-desc">With more than 20,000 products sold, our<br>customers love what we offer.</span>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <h3>12,531</h3>
+                <p>Customers Served</p>
+                <span class="stat-desc">Customers choose us for quality, reliability, and<br>a experience that keeps them coming back!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="category-grid">
+            <a href="#" class="category-item">
+                <div class="category-overlay"></div>
+                <img src="/api/placeholder/384/300" alt="Electronics" class="category-img">
+                <h3>Electronics</h3>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-overlay"></div>
+                <img src="/api/placeholder/384/300" alt="Clothing" class="category-img">
+                <h3>Clothing</h3>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-overlay"></div>
+                <img src="/api/placeholder/384/300" alt="Home & Garden" class="category-img">
+                <h3>Home & Garden</h3>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-overlay"></div>
+                <img src="/api/placeholder/384/300" alt="Beauty" class="category-img">
+                <h3>Beauty</h3>
+            </a>
+            <a href="#" class="category-item">
+                <div class="category-overlay"></div>
+                <img src="/api/placeholder/384/300" alt="Sports" class="category-img">
+                <h3>Sports</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products" id="products">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <a href="#" class="view-all-btn">View All</a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <a href="product-keyser.html">
+                        <img src="/api/placeholder/250/300" alt="Keyser Product" class="product-img">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h3>Keyser</h3>
+                    <p class="price">€4.99 - €29.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <a href="product-redengine.html">
+                        <img src="/api/placeholder/250/300" alt="redENGINE Product" class="product-img">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h3>redENGINE</h3>
+                    <p class="price">€7.99 - €49.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <a href="product-susano.html">
+                        <img src="/api/placeholder/250/300" alt="Susano Product" class="product-img">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h3>Susano</h3>
+                    <p class="price">€10.99 - €59.99</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <a href="product-vortex.html">
+                        <img src="/api/placeholder/250/300" alt="Vortex Product" class="product-img">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h3>Vortex</h3>
+                    <p class="price">€9.99 - €29.99</p>
+                </div>
+            </div>
+        </div>
+        <div class="product-row">
+            <div class="product-card">
+                <div class="product-image">
+                    <a href="product-fivem.html">
+                        <img src="/api/placeholder/250/300" alt="Uzui FiveM Product" class="product-img">
+                    </a>
+                </div>
+                <div class="product-info">
+                    <h3>Uzui FiveM</h3>
+                    <p class="price">€3.99 - €29.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews-section">
+        <h2>Customer Reviews</h2>
+        <div class="review-placeholder">
+            <p>Customer reviews will be displayed here</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#" class="logo">
+                    <img src="/api/placeholder/40/40" alt="Miri Market Logo" class="footer-logo-img">
+                    Miri Market
+                </a>
+                <p>© 2025 Miri Market. All Rights Reserved.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="browse.html">Products</a></li>
+                        <li><a href="#" id="terms-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Socials</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Terms of Service</h2>
+            <div class="terms-text">
+                <p>Welcome to Miri Market. By accessing our website, you agree to these Terms of Service.</p>
+                <h3>1. General Terms</h3>
+                <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                <h3>2. User Account</h3>
+                <p>If you create an account on our website, you are responsible for maintaining the security of your account and for all activities that occur under the account.</p>
+                <h3>3. Product Information</h3>
+                <p>We strive to provide accurate product information, but we do not warrant that product descriptions or other content is accurate, complete, reliable, current, or error-free.</p>
+                <h3>4. Pricing and Payment</h3>
+                <p>All prices are subject to change without notice. We reserve the right to refuse or cancel any orders placed for products listed at an incorrect price.</p>
+                <h3>5. Privacy Policy</h3>
+                <p>Your use of this website is also governed by our Privacy Policy, which is incorporated into these Terms of Service by reference.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Warte, bis das DOM vollständig geladen ist
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation für die Seitennavigation
+            document.body.classList.add('page-loaded');
+            
+            // Parallax-Effekt für den Hero-Bereich
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                if (hero) {
+                    hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+                }
+            });
+
+            // Modal für Nutzungsbedingungen
+            const modal = document.getElementById('terms-modal');
+            const termsLink = document.getElementById('terms-link');
+            const closeButton = document.querySelector('.close-button');
+            
+            if (termsLink && modal && closeButton) {
+                // Öffne Modal beim Klicken auf Nutzungsbedingungen
+                termsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Verhindert Scrollen
+                });
+                
+                // Schließe Modal mit × Button
+                closeButton.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Scrolling wiederherstellen
+                });
+                
+                // Schließe Modal beim Klicken außerhalb des Inhalts
+                window.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Schließe Modal mit Escape-Taste
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Sanftes Scrollen für Anker-Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    // Überspringe, wenn es der Terms-Link ist
+                    if (this.id === 'terms-link') return;
+                    
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return; // Überspringe, wenn href nur # ist
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Abstand für Header
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animation beim Scrollen für Elemente
+            const animateOnScrollElements = document.querySelectorAll('.product-card, .category-item, .section-header, .review-placeholder');
+            
+            // Setze anfängliche Stile für Animationselemente
+            animateOnScrollElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Funktion prüft, ob Element im Viewport ist und animiert es
+            const animateOnScroll = function() {
+                animateOnScrollElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Starte Animation für Elemente im Sichtfeld
+            animateOnScroll();
+            
+            // Löse Animation beim Scrollen aus
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Glänzender Effekt für die Nav-Links beim Hover
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.textShadow = '0 0 10px rgba(218, 0, 255, 0.7)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.textShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
